@@ -7,7 +7,7 @@ The Detailed documentation is available [here](http://docs.gocashfree.com/docs/v
 The CashfreeSDK is bundled as a AAR. More information at https://developer.android.com/studio/projects/android-library.html
 
 
-Here are steps to import the CashfreeSDK into your Android App:
+Here are steps to import the CashfreeSDK into your Android App with Android Studio version 2.2:
 
 1. Get the cashfreeSDK.aar file by cloning this repository.
 2. Go to File -> New -> New Module..
