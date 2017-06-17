@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_merchant"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="5px"
+    android:paddingLeft="5px"
+    android:paddingRight="5px"
+    android:paddingTop="5px"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:id="@+id/lay_orderId"
+        android:weightSum="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.50"
+            android:text="Order Id"
+            android:textSize="16sp"
+            android:gravity="end"/>
+
+        <EditText
+            android:id="@+id/order_id"
+            android:layout_width="100dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.50"
+            android:text=""
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:weightSum="1"
+        android:id="@+id/lay_orderAmount"
+        android:layout_below="@id/lay_orderId"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dip">
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.50"
+            android:text="Order Amount"
+            android:textSize="16sp"
+            android:gravity="end"/>
+
+        <EditText
+            android:id="@+id/order_amount"
+            android:layout_width="100dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.50"
+            android:text=""
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:weightSum="1"
+        android:id="@+id/lay_orderNote"
+        android:layout_below="@id/lay_orderAmount"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dip">
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.50"
+            android:text="Order Note"
+            android:textSize="16sp"
+            android:gravity="end"/>
+
+        <EditText
+            android:id="@+id/order_note"
+            android:layout_width="100dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.50"
+            android:text=""
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:weightSum="1"
+        android:id="@+id/lay_customerName"
+        android:layout_below="@id/lay_orderNote"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dip">
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.50"
+            android:text="Customer Name"
+            android:textSize="16sp"
+            android:gravity="end"
+            android:layout_marginBottom="10dip"/>
+
+        <EditText
+            android:id="@+id/customer_name"
+            android:layout_width="100dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.50"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:weightSum="1"
+        android:id="@+id/lay_customerEmail"
+        android:layout_below="@id/lay_customerName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dip">
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.50"
+            android:text="Customer Email"
+            android:textSize="16sp"
+            android:gravity="end"
+            android:layout_marginBottom="10dip"/>
+
+        <EditText
+            android:id="@+id/customer_email"
+            android:layout_width="100dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.50"
+            android:inputType="textEmailAddress"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:weightSum="1"
+        android:id="@+id/lay_customerPhone"
+        android:layout_below="@id/lay_customerEmail"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dip">
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.50"
+            android:text="Customer Phone"
+            android:textSize="16sp"
+            android:gravity="end"
+            android:layout_marginBottom="10dip"/>
+
+        <EditText
+            android:id="@+id/customer_phone"
+            android:layout_width="100dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.50"
+            android:inputType="phone"
+            android:textSize="16sp"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:weightSum="1"
+        android:layout_below="@id/lay_customerPhone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/start_transaction"
+            android:text="Payment"
+            android:onClick="initPayment"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="10dip"/>
+    </LinearLayout>
+</RelativeLayout>
