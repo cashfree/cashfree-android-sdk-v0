@@ -11,6 +11,7 @@ import com.gocashfree.cashfreesdk.CFPaymentService;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_APP_ID;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_CUSTOMER_EMAIL;
@@ -24,43 +25,78 @@ import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_PAYMENT_MODES;
 
 public class MainActivity extends AppCompatActivity implements CFClientInterface {
 
-    private static final String TAG = "MainActivity";
-
     private Map<String, String> params;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Generate random orderID
+        long range = 100 * 1000 * 1000 - 1;
+        Random r = new Random();
+
+        // Between 100,000,000 and 199,999,999
+        long orderId = (long)(r.nextDouble()*range) + range + 1;
+
+        EditText editOrder = (EditText) findViewById(R.id.order_id);
+        editOrder.setText(String.valueOf(orderId));
     }
 
-    public void initPayment(View view) {
-        // This should be changed to your own server checksum generator utility.
-        // Refer CashfreeSDK Documentation for more info.
-        String checksum_url ="https://www.musclesandwellness.com/appservices/userdashboard/gocash.php";
+    public void doPayment(View view) {
+        /*
+         * checksumUrl is the path to your hosted checksum calculation script.
+         * For instructions on how to create checksumUrl script look at the
+         * following url: http://docs.gocashfree.com/docs/v1/?php#mobile-app.
+         */
+        String checksumUrl ="https://yourwebsitename.com/path/to/checksum.php";
+
+        /*
+         * appId will be shared to you by CashFree over mail. This is a unique
+         * identifier for your app. Please replace this appId with your appId.
+         * Also, as explained below you will need to change your appId to prod
+         * credentials before publishing your app.
+         */
+        String appId = "1234567890abcdef123456789";
+
+        /*
+         * stage allows you to switch between sandboxed and production servers
+         * for CashFree Payment Gateway. The possible values are
+         *
+         * 1. TEST: Use the Test server. You can use this service while integrating
+         *      and testing the CashFree PG. No real money will be deducted from the
+         *      cards and bank accounts you use this stage. This mode is thus ideal
+         *      for use during the development. You can use the cards provided here
+         *      while in this stage: http://docs.gocashfree.com/docs/v1/#test-data
+         *
+         * 2. PROD: Once you have completed the testing and integration and successfully
+         *      integrated the CashFree PG, use this value for stage variable. Then
+         *      real credit/debit cards etc. can be used on CashFree PG as now
+         *      the CashFreeSDK will be using production server. Ensure that the value of
+         *      stage variable is PROD before publishing your app. When you switch to
+         *      PROD you will need to update the appId to the Prod Credentials (which
+         *      we will email to you separately).
+         */
+        String stage = "TEST";
 
         params = new HashMap<>();
 
-        // Change this to reflect your own APP_ID. Refer CashfreeSDK Documentation for more info.
-        params.put(PARAM_APP_ID, "17395cac6b633f4af601ff1371");
+        // Change this to reflect your own APP_ID. Refer CashfreeSDK Documentation or contact .
+        params.put(PARAM_APP_ID, appId);
         params.put(PARAM_ORDER_ID, ((EditText) findViewById(R.id.order_id)).getText().toString());
         params.put(PARAM_ORDER_AMOUNT, ((EditText) findViewById(R.id.order_amount)).getText().toString());
         params.put(PARAM_ORDER_NOTE, ((EditText) findViewById(R.id.order_note)).getText().toString());
         params.put(PARAM_CUSTOMER_NAME, ((EditText) findViewById(R.id.customer_name)).getText().toString());
         params.put(PARAM_CUSTOMER_PHONE, ((EditText) findViewById(R.id.customer_phone)).getText().toString());
         params.put(PARAM_CUSTOMER_EMAIL,((EditText) findViewById(R.id.customer_email)).getText().toString());
-
-        // Allow all payment modes by using empty string
         params.put(PARAM_PAYMENT_MODES, "");
 
         for(Map.Entry entry : params.entrySet()) {
-            Log.d("TEST", entry.getKey() + " " + entry.getValue());
+            Log.d("CFSKDSample", entry.getKey() + " " + entry.getValue());
         }
 
         CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
 
         // stage identifies whether you want trigger test or production service
-        String stage = "TEST";
-        cfPaymentService.doPayment(this, params, checksum_url, this, stage);
+        cfPaymentService.doPayment(this, params, checksumUrl, this, stage);
     }
 
     @Override

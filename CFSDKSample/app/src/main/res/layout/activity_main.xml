@@ -34,7 +34,6 @@
             android:layout_width="100dip"
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
-            android:text=""
             android:textSize="16sp"/>
     </LinearLayout>
 
@@ -62,7 +61,7 @@
             android:layout_width="100dip"
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
-            android:text=""
+            android:text="100"
             android:textSize="16sp"/>
     </LinearLayout>
 
@@ -90,7 +89,7 @@
             android:layout_width="100dip"
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
-            android:text=""
+            android:text="Test"
             android:textSize="16sp"/>
     </LinearLayout>
 
@@ -119,6 +118,7 @@
             android:layout_width="100dip"
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
+            android:text="Test"
             android:textSize="16sp"/>
     </LinearLayout>
 
@@ -148,6 +148,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
             android:inputType="textEmailAddress"
+            android:text="test@gmail.com"
             android:textSize="16sp"/>
     </LinearLayout>
 
@@ -177,6 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
             android:inputType="phone"
+            android:text="9900012345"
             android:textSize="16sp"
             />
     </LinearLayout>
@@ -195,7 +197,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/start_transaction"
             android:text="Payment"
-            android:onClick="initPayment"
+            android:onClick="doPayment"
             android:layout_gravity="center"
             android:textStyle="bold"
             android:textSize="16sp"
