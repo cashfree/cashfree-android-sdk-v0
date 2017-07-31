@@ -1,3 +1,27 @@
 <resources>
+
     <string name="app_name">CFSDKSample</string>
+    <string name="order_id_label">Order Id</string>
+    <string name="order_id_hint">Enter the Order Id</string>
+
+    <string name="order_amount_label">Order Amount</string>
+    <string name="order_amount_hint">Enter the Order Amount</string>
+    <string name="order_amount_value">1</string>
+
+    <string name="order_note_label">Order Note</string>
+    <string name="order_note_hint">Enter the Order Note</string>
+    <string name="order_note_value">Test</string>
+
+    <string name="customer_name_label">Name</string>
+    <string name="customer_name_hint">Enter the name of the Customer</string>
+    <string name="customer_name_value">Test</string>
+
+    <string name="customer_phone_label">Phone</string>
+    <string name="customer_phone_value">9900012345</string>
+
+    <string name="customer_email_label">Email</string>
+    <string name="customer_email_value">test@gmail.com</string>
+
+    <string name="payment_button_label">Payment</string>
+
 </resources>

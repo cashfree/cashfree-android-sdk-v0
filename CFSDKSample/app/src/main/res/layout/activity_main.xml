@@ -4,10 +4,10 @@
     android:id="@+id/activity_merchant"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="5px"
-    android:paddingLeft="5px"
-    android:paddingRight="5px"
-    android:paddingTop="5px"
+    android:paddingBottom="5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp"
     tools:context=".MainActivity">
 
 
@@ -25,12 +25,13 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
-            android:text="Order Id"
+            android:text="@string/order_id_label"
             android:textSize="16sp"
             android:gravity="end"/>
 
         <EditText
             android:id="@+id/order_id"
+            android:hint=""
             android:layout_width="100dip"
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
@@ -52,16 +53,17 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
-            android:text="Order Amount"
+            android:text="@string/order_amount_label"
             android:textSize="16sp"
             android:gravity="end"/>
 
         <EditText
             android:id="@+id/order_amount"
+            android:hint="@string/order_amount_hint"
             android:layout_width="100dip"
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
-            android:text="100"
+            android:text="@string/order_amount_value"
             android:textSize="16sp"/>
     </LinearLayout>
 
@@ -80,16 +82,17 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
-            android:text="Order Note"
+            android:text="@string/order_note_label"
             android:textSize="16sp"
             android:gravity="end"/>
 
         <EditText
             android:id="@+id/order_note"
+            android:hint="@string/order_note_hint"
             android:layout_width="100dip"
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
-            android:text="Test"
+            android:text="@string/order_note_value"
             android:textSize="16sp"/>
     </LinearLayout>
 
@@ -108,17 +111,18 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
-            android:text="Customer Name"
+            android:text="@string/customer_name_label"
             android:textSize="16sp"
             android:gravity="end"
             android:layout_marginBottom="10dip"/>
 
         <EditText
             android:id="@+id/customer_name"
+            android:hint="@string/customer_name_hint"
             android:layout_width="100dip"
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
-            android:text="Test"
+            android:text="@string/customer_name_value"
             android:textSize="16sp"/>
     </LinearLayout>
 
@@ -137,7 +141,7 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
-            android:text="Customer Email"
+            android:text="@string/customer_email_label"
             android:textSize="16sp"
             android:gravity="end"
             android:layout_marginBottom="10dip"/>
@@ -148,7 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
             android:inputType="textEmailAddress"
-            android:text="test@gmail.com"
+            android:text="@string/customer_email_value"
             android:textSize="16sp"/>
     </LinearLayout>
 
@@ -167,7 +171,7 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
-            android:text="Customer Phone"
+            android:text="@string/customer_phone_label"
             android:textSize="16sp"
             android:gravity="end"
             android:layout_marginBottom="10dip"/>
@@ -178,7 +182,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.50"
             android:inputType="phone"
-            android:text="9900012345"
+            android:text="@string/customer_phone_value"
             android:textSize="16sp"
             />
     </LinearLayout>
@@ -196,7 +200,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/start_transaction"
-            android:text="Payment"
+            android:text="@string/payment_button_label"
             android:onClick="doPayment"
             android:layout_gravity="center"
             android:textStyle="bold"
