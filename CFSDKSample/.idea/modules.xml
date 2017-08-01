@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/CFSDKSample.iml" filepath="$PROJECT_DIR$/CFSDKSample.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/cashfreeSDK/cashfreeSDK.iml" filepath="$PROJECT_DIR$/cashfreeSDK/cashfreeSDK.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cashfreeSDK/cashfreeSDK.iml" filepath="$PROJECT_DIR$/cashfreeSDK/cashfreeSDK.iml" />
     </modules>
   </component>
 </project>
