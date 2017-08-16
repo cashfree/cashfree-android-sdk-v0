@@ -25,7 +25,6 @@ import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_PAYMENT_MODES;
 
 public class MainActivity extends AppCompatActivity implements CFClientInterface {
 
-    private Map<String, String> params;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          */
         String stage = "TEST";
 
-        params = new HashMap<>();
+        Map<String, String> params = new HashMap<>();
 
         // Change this to reflect your own APP_ID. Refer CashfreeSDK Documentation or contact .
         params.put(PARAM_APP_ID, appId);
@@ -101,17 +100,17 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
 
     @Override
     public void onSuccess(Map<String, String> map) {
-
+        Log.d("CFSDKSample", "Payment Success");
     }
 
     @Override
     public void onFailure(Map<String, String> map) {
-
+        Log.d("CFSDKSample", "Payment Failure");
     }
 
     @Override
     public void onNavigateBack() {
-
+        Log.d("CFSDKSample", "Back Pressed");
     }
 }
 
