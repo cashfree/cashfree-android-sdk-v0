@@ -1,5 +1,9 @@
 package com.gocashfree.cfsdk.sample.cfsdksample;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,10 +12,6 @@ import android.widget.EditText;
 
 import com.gocashfree.cashfreesdk.CFClientInterface;
 import com.gocashfree.cashfreesdk.CFPaymentService;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
 
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_APP_ID;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_CUSTOMER_EMAIL;
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          * For instructions on how to create checksumUrl script look at the
          * following url: http://docs.gocashfree.com/docs/v1/?php#mobile-app.
          */
-        String checksumUrl ="http://yourwebsitename.com/path/to/checksum.php";
+        String checksumUrl ="https://yourwebsitename.com/path/to/checksum.php";
 
         /*
          * appId will be shared to you by CashFree over mail. This is a unique
