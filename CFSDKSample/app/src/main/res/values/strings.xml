@@ -23,5 +23,6 @@
     <string name="customer_email_value">test@gmail.com</string>
 
     <string name="payment_button_label">Payment</string>
+    <string name="upi_deeplink_button_label">UPI Deeplink</string>
 
 </resources>
