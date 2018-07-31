@@ -1,6 +1,7 @@
 package com.gocashfree.cfsdk.sample.cfsdksample;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.gocashfree.cashfreesdk.CFClientInterface;
 import com.gocashfree.cashfreesdk.CFPaymentService;
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          * For instructions on how to create checksumUrl script look at the
          * following url: http://docs.gocashfree.com/docs/v1/?php#mobile-app.
          */
-        String checksumUrl ="https://yourwebsitename.com/path/to/checksum.php";
+        String checksumUrl ="https://test.cashfree.com/checksumPROD.php";
 
         /*
          * appId will be shared to you by CashFree over mail. This is a unique
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          * Also, as explained below you will need to change your appId to prod
          * credentials before publishing your app.
          */
-        String appId = "1111111111122222222";
+        String appId = "32f431b2ba7e639be29f3923";
 
         /*
          * stage allows you to switch between sandboxed and production servers
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          *      PROD you will need to update the appId to the Prod Credentials (which
          *      we will email to you separately).
          */
-        String stage = "TEST";
+        String stage = "PROD";
 
         Map<String, String> params = new HashMap<>();
 
@@ -93,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
         }
 
         CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
+
+
 
         // stage identifies whether you want trigger test or production service
         cfPaymentService.doPayment(this, params, checksumUrl, this, stage);
@@ -155,7 +159,78 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
 
         // stage identifies whether you want trigger test or production service
         cfPaymentService.upiPayment(this, params, checksumUrl, this, stage);
+    }
 
+    public void tezPayment(View view) {
+        /*
+         * checksumUrl is the path to your hosted checksum calculation script.
+         * For instructions on how to create checksumUrl script look at the
+         * following url: http://docs.gocashfree.com/docs/v1/?php#mobile-app.
+         */
+        String checksumUrl ="https://test.cashfree.com/checksumPROD.php";
+
+        /*
+         * appId will be shared to you by CashFree over mail. This is a unique
+         * identifier for your app. Please replace this appId with your appId.
+         * Also, as explained below you will need to change your appId to prod
+         * credentials before publishing your app.
+         */
+        String appId = "32f431b2ba7e639be29f3923";
+
+        /*
+         * stage allows you to switch between sandboxed and production servers
+         * for CashFree Payment Gateway. The possible values are
+         *
+         * 1. TEST: Use the Test server. You can use this service while integrating
+         *      and testing the CashFree PG. No real money will be deducted from the
+         *      cards and bank accounts you use this stage. This mode is thus ideal
+         *      for use during the development. You can use the cards provided here
+         *      while in this stage: http://docs.gocashfree.com/docs/v1/#test-data
+         *
+         * 2. PROD: Once you have completed the testing and integration and successfully
+         *      integrated the CashFree PG, use this value for stage variable. Then
+         *      real credit/debit cards etc. can be used on CashFree PG as now
+         *      the CashFreeSDK will be using production server. Ensure that the value of
+         *      stage variable is PROD before publishing your app. When you switch to
+         *      PROD you will need to update the appId to the Prod Credentials (which
+         *      we will email to you separately).
+         */
+        String stage = "PROD";
+
+        Map<String, String> params = new HashMap<>();
+
+        // Change this to reflect your own APP_ID. Refer CashfreeSDK Documentation or contact .
+        params.put(PARAM_APP_ID, appId);
+        params.put(PARAM_ORDER_ID, ((EditText) findViewById(R.id.order_id)).getText().toString());
+        params.put(PARAM_ORDER_AMOUNT, ((EditText) findViewById(R.id.order_amount)).getText().toString());
+        params.put(PARAM_ORDER_NOTE, ((EditText) findViewById(R.id.order_note)).getText().toString());
+        params.put(PARAM_CUSTOMER_NAME, ((EditText) findViewById(R.id.customer_name)).getText().toString());
+        params.put(PARAM_CUSTOMER_PHONE, ((EditText) findViewById(R.id.customer_phone)).getText().toString());
+        params.put(PARAM_CUSTOMER_EMAIL,((EditText) findViewById(R.id.customer_email)).getText().toString());
+        params.put(PARAM_PAYMENT_MODES, "");
+
+        for(Map.Entry entry : params.entrySet()) {
+            Log.d("CFSKDSample", entry.getKey() + " " + entry.getValue());
+        }
+
+        CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
+
+        // Get details of all the installed UPI Apps
+        String[] upiClients = cfPaymentService.getUpiClients(this);
+
+        // check if tez is installed
+        for(String upiClient : upiClients) {
+            if (upiClient.equals("com.google.android.apps.nbu.paisa.user")) {
+                // set this as the UPI Client
+                cfPaymentService.selectUpiClient(upiClient);
+
+                // stage identifies whether you want trigger test or production service
+                cfPaymentService.upiPayment(this, params, checksumUrl, this, stage);
+                break;
+            }
+        }
+
+        Toast.makeText(this, "Tez App is not installed", 5);
     }
 
     @Override

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_merchant"
     android:layout_width="match_parent"
@@ -9,18 +10,32 @@
     android:paddingRight="5dp"
     android:paddingTop="5dp"
     tools:context=".MainActivity">
-
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:id="@+id/lay_headline"
+        android:weightSum="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/payment_headline"
+            android:gravity="center"
+            android:textSize="24sp"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="start"
+        android:layout_below="@id/lay_headline"
         android:id="@+id/lay_orderId"
         android:weightSum="1"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
-
         <TextView
             android:layout_width="0dip"
             android:layout_height="wrap_content"
@@ -228,5 +243,42 @@
             android:text="@string/upi_deeplink_button_label"
             android:textSize="16sp"
             android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_tez_transaction"
+        android:gravity="start"
+        android:weightSum="1"
+        android:layout_below="@id/layout_upi_transaction"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <!--<ImageButton-->
+            <!--android:id="@+id/imageButton"-->
+            <!--android:text="TEZ Payment"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--app:srcCompat="@mipmap/ic_launcher" />-->
+
+        <Button
+            android:id="@+id/start_tez_transaction"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dip"
+            android:drawableLeft="@mipmap/ic_tez"
+            android:onClick="tezPayment"
+            android:text="@string/tez_button_label"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!--<ImageView-->
+            <!--android:id="@+id/imageView"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--app:srcCompat="@mipmap/ic_launcher_round" />-->
     </LinearLayout>
 </RelativeLayout>
