@@ -253,15 +253,6 @@
         android:layout_below="@id/layout_upi_transaction"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
-
-        <!--<ImageButton-->
-            <!--android:id="@+id/imageButton"-->
-            <!--android:text="TEZ Payment"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--app:srcCompat="@mipmap/ic_launcher" />-->
-
         <Button
             android:id="@+id/start_tez_transaction"
             android:layout_width="fill_parent"
@@ -273,12 +264,5 @@
             android:text="@string/tez_button_label"
             android:textSize="16sp"
             android:textStyle="bold" />
-
-        <!--<ImageView-->
-            <!--android:id="@+id/imageView"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--app:srcCompat="@mipmap/ic_launcher_round" />-->
     </LinearLayout>
 </RelativeLayout>
