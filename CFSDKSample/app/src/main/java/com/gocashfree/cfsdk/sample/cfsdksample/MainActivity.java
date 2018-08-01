@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          * For instructions on how to create checksumUrl script look at the
          * following url: http://docs.gocashfree.com/docs/v1/?php#mobile-app.
          */
-        String checksumUrl ="https://test.cashfree.com/checksumPROD.php";
+        String checksumUrl ="https://yourwebsitename.com/path/to/checksum.php";
 
         /*
          * appId will be shared to you by CashFree over mail. This is a unique
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          * Also, as explained below you will need to change your appId to prod
          * credentials before publishing your app.
          */
-        String appId = "32f431b2ba7e639be29f3923";
+        String appId = "1111111111122222222";
 
         /*
          * stage allows you to switch between sandboxed and production servers
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          *      PROD you will need to update the appId to the Prod Credentials (which
          *      we will email to you separately).
          */
-        String stage = "PROD";
+        String stage = "TEST";
 
         Map<String, String> params = new HashMap<>();
 
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          * For instructions on how to create checksumUrl script look at the
          * following url: http://docs.gocashfree.com/docs/v1/?php#mobile-app.
          */
-        String checksumUrl ="https://test.cashfree.com/checksum.php";
+        String checksumUrl ="https://yourwebsitename.com/path/to/checksum.php";
 
         /*
          * appId will be shared to you by CashFree over mail. This is a unique
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          * Also, as explained below you will need to change your appId to prod
          * credentials before publishing your app.
          */
-        String appId = "275432e3853bd165afbf5272";
+        String appId = "1111111111122222222";
 
         /*
          * stage allows you to switch between sandboxed and production servers
@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          * For instructions on how to create checksumUrl script look at the
          * following url: http://docs.gocashfree.com/docs/v1/?php#mobile-app.
          */
-        String checksumUrl ="https://test.cashfree.com/checksumPROD.php";
+        String checksumUrl = "https://yourwebsitename.com/path/to/checksum.php";
 
         /*
          * appId will be shared to you by CashFree over mail. This is a unique
@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          * Also, as explained below you will need to change your appId to prod
          * credentials before publishing your app.
          */
-        String appId = "32f431b2ba7e639be29f3923";
+        String appId = "1111111111122222222";
 
         /*
          * stage allows you to switch between sandboxed and production servers
@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          *      PROD you will need to update the appId to the Prod Credentials (which
          *      we will email to you separately).
          */
-        String stage = "PROD";
+        String stage = "TEST";
 
         Map<String, String> params = new HashMap<>();
 
