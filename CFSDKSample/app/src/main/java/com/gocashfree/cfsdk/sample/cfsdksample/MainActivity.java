@@ -1,7 +1,7 @@
 package com.gocashfree.cfsdk.sample.cfsdksample;
 
 import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
 import java.util.Random;
 
@@ -95,8 +95,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
         }
 
         CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
-
-
+        cfPaymentService.setOrientation(0);
 
         // stage identifies whether you want trigger test or production service
         cfPaymentService.doPayment(this, params, checksumUrl, this, stage);
@@ -215,8 +214,11 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
 
         CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
 
+
         // Get details of all the installed UPI Apps
         String[] upiClients = cfPaymentService.getUpiClients(this);
+
+
 
         // check if tez is installed
         for(String upiClient : upiClients) {
@@ -230,7 +232,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
             }
         }
 
-        Toast.makeText(this, "Tez App is not installed", 5);
+        Toast.makeText(this, "Tez App is not installed", Toast.LENGTH_SHORT).show();
     }
 
     @Override
