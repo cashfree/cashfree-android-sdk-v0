@@ -22,7 +22,7 @@ import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_CUSTOMER_PHONE;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_ORDER_AMOUNT;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_ORDER_ID;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_ORDER_NOTE;
-import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_PAYMENT_MODES;
+
 
 
 public class MainActivity extends AppCompatActivity implements CFClientInterface {
@@ -31,32 +31,16 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Generate random orderID
-        long range = 100 * 1000 * 1000 - 1;
-        Random r = new Random();
 
-        // Between 100,000,000 and 199,999,999
-        long orderId = (long)(r.nextDouble()*range) + range + 1;
-
-        EditText editOrder = (EditText) findViewById(R.id.order_id);
-        editOrder.setText(String.valueOf(orderId));
     }
 
-    public void doPayment(View view) {
+    private void triggerPayment(boolean isUpiIntent) {
         /*
-         * checksumUrl is the path to your hosted checksum calculation script.
-         * For instructions on how to create checksumUrl script look at the
-         * following url: http://docs.gocashfree.com/docs/v1/?php#mobile-app.
+         * token can be generated from your backend by calling cashfree servers. Please
+         * check the documentation for details on generating the token.
          */
-        String checksumUrl ="https://yourwebsitename.com/path/to/checksum.php";
+        String token ="1234567890";
 
-        /*
-         * appId will be shared to you by CashFree over mail. This is a unique
-         * identifier for your app. Please replace this appId with your appId.
-         * Also, as explained below you will need to change your appId to prod
-         * credentials before publishing your app.
-         */
-        String appId = "1111111111122222222";
 
         /*
          * stage allows you to switch between sandboxed and production servers
@@ -66,29 +50,38 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          *      and testing the CashFree PG. No real money will be deducted from the
          *      cards and bank accounts you use this stage. This mode is thus ideal
          *      for use during the development. You can use the cards provided here
-         *      while in this stage: http://docs.gocashfree.com/docs/v1/#test-data
+         *      while in this stage: https://docs.cashfree.com/docs/resources/#test-data
          *
          * 2. PROD: Once you have completed the testing and integration and successfully
-         *      integrated the CashFree PG, use this value for stage variable. Then
-         *      real credit/debit cards etc. can be used on CashFree PG as now
-         *      the CashFreeSDK will be using production server. Ensure that the value of
-         *      stage variable is PROD before publishing your app. When you switch to
-         *      PROD you will need to update the appId to the Prod Credentials (which
-         *      we will email to you separately).
+         *      integrated the CashFree PG, use this value for stage variable. This will
+         *      enable live transactions
          */
         String stage = "TEST";
 
+        /*
+         * appId will be available to you at CashFree Dashboard. This is a unique
+         * identifier for your app. Please replace this appId with your appId.
+         * Also, as explained below you will need to change your appId to prod
+         * credentials before publishing your app.
+         */
+        String appId = "0987654321";
+        String orderId = "Order0001";
+        String orderAmount = "1";
+        String orderNote = "Test Order";
+        String customerName = "John Doe";
+        String customerPhone = "9900012345";
+        String customerEmail = "test@gmail.com";
+
         Map<String, String> params = new HashMap<>();
 
-        // Change this to reflect your own APP_ID. Refer CashfreeSDK Documentation or contact .
         params.put(PARAM_APP_ID, appId);
-        params.put(PARAM_ORDER_ID, ((EditText) findViewById(R.id.order_id)).getText().toString());
-        params.put(PARAM_ORDER_AMOUNT, ((EditText) findViewById(R.id.order_amount)).getText().toString());
-        params.put(PARAM_ORDER_NOTE, ((EditText) findViewById(R.id.order_note)).getText().toString());
-        params.put(PARAM_CUSTOMER_NAME, ((EditText) findViewById(R.id.customer_name)).getText().toString());
-        params.put(PARAM_CUSTOMER_PHONE, ((EditText) findViewById(R.id.customer_phone)).getText().toString());
-        params.put(PARAM_CUSTOMER_EMAIL,((EditText) findViewById(R.id.customer_email)).getText().toString());
-        params.put(PARAM_PAYMENT_MODES, "");
+        params.put(PARAM_ORDER_ID, orderId);
+        params.put(PARAM_ORDER_AMOUNT, orderAmount);
+        params.put(PARAM_ORDER_NOTE, orderNote);
+        params.put(PARAM_CUSTOMER_NAME, customerName);
+        params.put(PARAM_CUSTOMER_PHONE, customerPhone);
+        params.put(PARAM_CUSTOMER_EMAIL,customerEmail);
+
 
         for(Map.Entry entry : params.entrySet()) {
             Log.d("CFSKDSample", entry.getKey() + " " + entry.getValue());
@@ -97,142 +90,23 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
         CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
         cfPaymentService.setOrientation(0);
 
-        // stage identifies whether you want trigger test or production service
-        cfPaymentService.doPayment(this, params, checksumUrl, this, stage);
+        if (isUpiIntent) {
+            // Use the following method for initiating UPI Intent Payments
+            cfPaymentService.upiPayment(this, params, token, this, stage);
+        }
+        else {
+            // Use the following method for initiating regular Payments
+            cfPaymentService.doPayment(this, params, token, this, stage);
+        }
 
+    }
+
+    public void doPayment(View view) {
+        this.triggerPayment(false);
     }
 
     public void upiPayment(View view) {
-        /*
-         * checksumUrl is the path to your hosted checksum calculation script.
-         * For instructions on how to create checksumUrl script look at the
-         * following url: http://docs.gocashfree.com/docs/v1/?php#mobile-app.
-         */
-        String checksumUrl ="https://yourwebsitename.com/path/to/checksum.php";
-
-        /*
-         * appId will be shared to you by CashFree over mail. This is a unique
-         * identifier for your app. Please replace this appId with your appId.
-         * Also, as explained below you will need to change your appId to prod
-         * credentials before publishing your app.
-         */
-        String appId = "1111111111122222222";
-
-        /*
-         * stage allows you to switch between sandboxed and production servers
-         * for CashFree Payment Gateway. The possible values are
-         *
-         * 1. TEST: Use the Test server. You can use this service while integrating
-         *      and testing the CashFree PG. No real money will be deducted from the
-         *      cards and bank accounts you use this stage. This mode is thus ideal
-         *      for use during the development. You can use the cards provided here
-         *      while in this stage: http://docs.gocashfree.com/docs/v1/#test-data
-         *
-         * 2. PROD: Once you have completed the testing and integration and successfully
-         *      integrated the CashFree PG, use this value for stage variable. Then
-         *      real credit/debit cards etc. can be used on CashFree PG as now
-         *      the CashFreeSDK will be using production server. Ensure that the value of
-         *      stage variable is PROD before publishing your app. When you switch to
-         *      PROD you will need to update the appId to the Prod Credentials (which
-         *      we will email to you separately).
-         */
-        String stage = "TEST";
-
-        Map<String, String> params = new HashMap<>();
-
-        // Change this to reflect your own APP_ID. Refer CashfreeSDK Documentation or contact .
-        params.put(PARAM_APP_ID, appId);
-        params.put(PARAM_ORDER_ID, ((EditText) findViewById(R.id.order_id)).getText().toString());
-        params.put(PARAM_ORDER_AMOUNT, ((EditText) findViewById(R.id.order_amount)).getText().toString());
-        params.put(PARAM_ORDER_NOTE, ((EditText) findViewById(R.id.order_note)).getText().toString());
-        params.put(PARAM_CUSTOMER_NAME, ((EditText) findViewById(R.id.customer_name)).getText().toString());
-        params.put(PARAM_CUSTOMER_PHONE, ((EditText) findViewById(R.id.customer_phone)).getText().toString());
-        params.put(PARAM_CUSTOMER_EMAIL,((EditText) findViewById(R.id.customer_email)).getText().toString());
-        params.put(PARAM_PAYMENT_MODES, "");
-
-        for(Map.Entry entry : params.entrySet()) {
-            Log.d("CFSKDSample", entry.getKey() + " " + entry.getValue());
-        }
-
-        CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
-
-        // stage identifies whether you want trigger test or production service
-        cfPaymentService.upiPayment(this, params, checksumUrl, this, stage);
-    }
-
-    public void tezPayment(View view) {
-        /*
-         * checksumUrl is the path to your hosted checksum calculation script.
-         * For instructions on how to create checksumUrl script look at the
-         * following url: http://docs.gocashfree.com/docs/v1/?php#mobile-app.
-         */
-        String checksumUrl = "https://yourwebsitename.com/path/to/checksum.php";
-
-        /*
-         * appId will be shared to you by CashFree over mail. This is a unique
-         * identifier for your app. Please replace this appId with your appId.
-         * Also, as explained below you will need to change your appId to prod
-         * credentials before publishing your app.
-         */
-        String appId = "1111111111122222222";
-
-        /*
-         * stage allows you to switch between sandboxed and production servers
-         * for CashFree Payment Gateway. The possible values are
-         *
-         * 1. TEST: Use the Test server. You can use this service while integrating
-         *      and testing the CashFree PG. No real money will be deducted from the
-         *      cards and bank accounts you use this stage. This mode is thus ideal
-         *      for use during the development. You can use the cards provided here
-         *      while in this stage: http://docs.gocashfree.com/docs/v1/#test-data
-         *
-         * 2. PROD: Once you have completed the testing and integration and successfully
-         *      integrated the CashFree PG, use this value for stage variable. Then
-         *      real credit/debit cards etc. can be used on CashFree PG as now
-         *      the CashFreeSDK will be using production server. Ensure that the value of
-         *      stage variable is PROD before publishing your app. When you switch to
-         *      PROD you will need to update the appId to the Prod Credentials (which
-         *      we will email to you separately).
-         */
-        String stage = "TEST";
-
-        Map<String, String> params = new HashMap<>();
-
-        // Change this to reflect your own APP_ID. Refer CashfreeSDK Documentation or contact .
-        params.put(PARAM_APP_ID, appId);
-        params.put(PARAM_ORDER_ID, ((EditText) findViewById(R.id.order_id)).getText().toString());
-        params.put(PARAM_ORDER_AMOUNT, ((EditText) findViewById(R.id.order_amount)).getText().toString());
-        params.put(PARAM_ORDER_NOTE, ((EditText) findViewById(R.id.order_note)).getText().toString());
-        params.put(PARAM_CUSTOMER_NAME, ((EditText) findViewById(R.id.customer_name)).getText().toString());
-        params.put(PARAM_CUSTOMER_PHONE, ((EditText) findViewById(R.id.customer_phone)).getText().toString());
-        params.put(PARAM_CUSTOMER_EMAIL,((EditText) findViewById(R.id.customer_email)).getText().toString());
-        params.put(PARAM_PAYMENT_MODES, "");
-
-        for(Map.Entry entry : params.entrySet()) {
-            Log.d("CFSKDSample", entry.getKey() + " " + entry.getValue());
-        }
-
-        CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
-
-
-        // Get details of all the installed UPI Apps
-        String[] upiClients = cfPaymentService.getUpiClients(this);
-
-
-
-        // check if tez is installed
-        for(String upiClient : upiClients) {
-            if (upiClient.equals("com.google.android.apps.nbu.paisa.user")) {
-                // set this as the UPI Client
-                cfPaymentService.selectUpiClient(upiClient);
-
-                // stage identifies whether you want trigger test or production service
-                cfPaymentService.upiPayment(this, params, checksumUrl, this, stage);
-                break;
-            }
-        }
-
-        Toast.makeText(this, "Tez App is not installed", Toast.LENGTH_SHORT).show();
+        this.triggerPayment(true);
     }
 
     @Override

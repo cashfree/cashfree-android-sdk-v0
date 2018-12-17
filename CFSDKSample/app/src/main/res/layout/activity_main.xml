@@ -10,259 +10,47 @@
     android:paddingRight="5dp"
     android:paddingTop="5dp"
     tools:context=".MainActivity">
-    <LinearLayout
-        android:layout_width="fill_parent"
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="start"
-        android:id="@+id/lay_headline"
-        android:weightSum="1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/payment_headline"
-            android:gravity="center"
-            android:textSize="24sp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
+        android:text="Sample Checkout Page"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="start"
-        android:layout_below="@id/lay_headline"
-        android:id="@+id/lay_orderId"
-        android:weightSum="1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-        <TextView
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.50"
-            android:text="@string/order_id_label"
-            android:textSize="16sp"
-            android:gravity="end"/>
-
-        <EditText
-            android:id="@+id/order_id"
-            android:hint=""
-            android:layout_width="100dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.50"
-            android:textSize="16sp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="start"
-        android:weightSum="1"
-        android:id="@+id/lay_orderAmount"
-        android:layout_below="@id/lay_orderId"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="10dip">
-
-        <TextView
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.50"
-            android:text="@string/order_amount_label"
-            android:textSize="16sp"
-            android:gravity="end"/>
-
-        <EditText
-            android:id="@+id/order_amount"
-            android:hint="@string/order_amount_hint"
-            android:layout_width="100dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.50"
-            android:text="@string/order_amount_value"
-            android:textSize="16sp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="16dp"
+        android:text="Pay Rs 1 by clicking the button below " />
+    <Button
+        android:id="@+id/button_pg2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="start"
-        android:weightSum="1"
-        android:id="@+id/lay_orderNote"
-        android:layout_below="@id/lay_orderAmount"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="10dip">
-
-        <TextView
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.50"
-            android:text="@string/order_note_label"
-            android:textSize="16sp"
-            android:gravity="end"/>
-
-        <EditText
-            android:id="@+id/order_note"
-            android:hint="@string/order_note_hint"
-            android:layout_width="100dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.50"
-            android:text="@string/order_note_value"
-            android:textSize="16sp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_below="@+id/button_pg"
+        android:layout_marginTop="15dp"
+        android:onClick="upiPayment"
+        android:text="UPI Intent Payment" />
+    <Button
+        android:id="@+id/button_pg"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="start"
-        android:weightSum="1"
-        android:id="@+id/lay_customerName"
-        android:layout_below="@id/lay_orderNote"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="10dip">
-
-        <TextView
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.50"
-            android:text="@string/customer_name_label"
-            android:textSize="16sp"
-            android:gravity="end"
-            android:layout_marginBottom="10dip"/>
-
-        <EditText
-            android:id="@+id/customer_name"
-            android:hint="@string/customer_name_hint"
-            android:layout_width="100dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.50"
-            android:text="@string/customer_name_value"
-            android:textSize="16sp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="start"
-        android:weightSum="1"
-        android:id="@+id/lay_customerEmail"
-        android:layout_below="@id/lay_customerName"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dip">
-
-        <TextView
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.50"
-            android:text="@string/customer_email_label"
-            android:textSize="16sp"
-            android:gravity="end"
-            android:layout_marginBottom="10dip"/>
-
-        <EditText
-            android:id="@+id/customer_email"
-            android:layout_width="100dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.50"
-            android:inputType="textEmailAddress"
-            android:text="@string/customer_email_value"
-            android:textSize="16sp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="start"
-        android:weightSum="1"
-        android:id="@+id/lay_customerPhone"
-        android:layout_below="@id/lay_customerEmail"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dip">
-
-        <TextView
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.50"
-            android:text="@string/customer_phone_label"
-            android:textSize="16sp"
-            android:gravity="end"
-            android:layout_marginBottom="10dip"/>
-
-        <EditText
-            android:id="@+id/customer_phone"
-            android:layout_width="100dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.50"
-            android:inputType="phone"
-            android:text="@string/customer_phone_value"
-            android:textSize="16sp"
-            />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/layout_start_transaction"
-        android:gravity="start"
-        android:weightSum="1"
-        android:layout_below="@id/lay_customerPhone"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-        <Button
-            android:id="@+id/start_transaction"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dip"
-            android:onClick="doPayment"
-            android:text="@string/payment_button_label"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/layout_upi_transaction"
-        android:gravity="start"
-        android:weightSum="1"
-        android:layout_below="@id/layout_start_transaction"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <Button
-            android:id="@+id/start_upi_transaction"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dip"
-            android:onClick="upiPayment"
-            android:text="@string/upi_deeplink_button_label"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/layout_tez_transaction"
-        android:gravity="start"
-        android:weightSum="1"
-        android:layout_below="@id/layout_upi_transaction"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-        <Button
-            android:id="@+id/start_tez_transaction"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dip"
-            android:drawableLeft="@mipmap/ic_tez"
-            android:onClick="tezPayment"
-            android:text="@string/tez_button_label"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+        android:layout_marginTop="112dp"
+        android:onClick="doPayment"
+        android:text="Card/UPI/Netbanking Payment" />
 </RelativeLayout>
