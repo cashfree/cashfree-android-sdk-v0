@@ -3,14 +3,11 @@ package com.gocashfree.cfsdk.sample.cfsdksample;
 import java.util.HashMap;
 
 import java.util.Map;
-import java.util.Random;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.gocashfree.cashfreesdk.CFClientInterface;
 import com.gocashfree.cashfreesdk.CFPaymentService;
