@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          * check the documentation for details on generating the token.
          * READ THIS TO GENERATE TOKEN: https://bit.ly/2RGV3Pp
          */
-        String token ="hw9JCN4MzUIJiOicGbhJCLiQ1VKJiOiAXe0Jye.tc9JyNkhTMwYTMlZzYzMWNiojI0xWYz9lIsQTM1QjN0cDN1EjOiAHelJCLiIlTJJiOik3YuVmcyV3QyVGZy9mIsEjOiQnb19WbBJXZkJ3biwiIxADMwIXZkJ3TiojIklkclRmcvJye.ulCQ-Tez68bsYjwutnLf10stbBzRY_mjBGKCSIW04oXLr2NwA_EiPWKrzZsSSe7dN8";
+        String token = "TOKEN_DATA";
 
 
         /*
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          *      integrated the CashFree PG, use this value for stage variable. This will
          *      enable live transactions
          */
-        String stage = "PROD";
+        String stage = "TEST";
 
         /*
          * appId will be available to you at CashFree Dashboard. This is a unique
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
          * Also, as explained below you will need to change your appId to prod
          * credentials before publishing your app.
          */
-        String appId = "412276d83433e59d19e1e6f82214";
+        String appId = "YOUR_APP_ID_HERE";
         String orderId = "Order0001";
         String orderAmount = "1";
         String orderNote = "Test Order";
