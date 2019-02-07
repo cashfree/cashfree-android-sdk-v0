@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
         }
         else {
             // Use the following method for initiating regular Payments
-            cfPaymentService.setConfirmOnExit(false);
             cfPaymentService.doPayment(this, params, token, this, stage);
         }
 
