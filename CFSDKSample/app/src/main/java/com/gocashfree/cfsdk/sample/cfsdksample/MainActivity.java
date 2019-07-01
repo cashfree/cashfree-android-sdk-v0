@@ -12,6 +12,8 @@ import android.view.View;
 import com.gocashfree.cashfreesdk.CFClientInterface;
 import com.gocashfree.cashfreesdk.CFPaymentService;
 
+import org.json.JSONException;
+
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_APP_ID;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_CUSTOMER_EMAIL;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_CUSTOMER_NAME;
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
         setContentView(R.layout.activity_main);
     }
 
-    private void triggerPayment(boolean isUpiIntent) {
+    private void triggerPayment(boolean isUpiIntent) throws JSONException {
         /*
          * token can be generated from your backend by calling cashfree servers. Please
          * check the documentation for details on generating the token.
@@ -89,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
 
         if (isUpiIntent) {
             // Use the following method for initiating UPI Intent Payments
-            cfPaymentService.upiPayment(this, params, token, this, stage);
+            cfPaymentService.gPayPayment(this, params, token, this, stage);
         }
         else {
             // Use the following method for initiating regular Payments
@@ -98,11 +100,11 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
 
     }
 
-    public void doPayment(View view) {
+    public void doPayment(View view) throws JSONException {
         this.triggerPayment(false);
     }
 
-    public void upiPayment(View view) {
+    public void upiPayment(View view) throws JSONException {
         this.triggerPayment(true);
     }
 

@@ -2,10 +2,10 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "28.0.3"
     defaultConfig {
         applicationId "com.gocashfree.cfsdk.sample.cfsdksample"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -20,13 +20,16 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.volley:volley:1.0.0'
-    compile project(':cashfreeSDK')
+    implementation 'com.android.support:appcompat-v7:25.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'com.android.volley:volley:1.0.0'
+    implementation project(':cashfreeSDK')
+    implementation project(":google-pay-client-api-1.0.0")
+    //implementation 'com.google.android.apps.nbu.paisa.inapp:google-pay-inapp-sdk:1.0.0'
+    implementation 'com.google.android.gms:play-services-tasks:15.0.1'
 }
