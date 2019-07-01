@@ -1,0 +1,2 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('google-pay-client-api-1.0.0.aar'))

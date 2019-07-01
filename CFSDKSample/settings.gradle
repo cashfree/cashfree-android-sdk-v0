@@ -1,1 +1,1 @@
-include ':app', ':cashfreeSDK'
+include ':app', ':cashfreeSDK', ':google-pay-client-api-1.0.0'
