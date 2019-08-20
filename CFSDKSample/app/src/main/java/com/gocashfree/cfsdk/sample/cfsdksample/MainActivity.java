@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
         setContentView(R.layout.activity_main);
     }
 
-    private void triggerPayment(boolean isUpiIntent) throws JSONException {
+    public void doPayment(View view) throws JSONException {
         /*
          * token can be generated from your backend by calling cashfree servers. Please
          * check the documentation for details on generating the token.
@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
         params.put(PARAM_CUSTOMER_NAME, customerName);
         params.put(PARAM_CUSTOMER_PHONE, customerPhone);
         params.put(PARAM_CUSTOMER_EMAIL,customerEmail);
+        params.put("card_id", "asdfads");
 
 
         for(Map.Entry entry : params.entrySet()) {
@@ -89,23 +90,8 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
         CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
         cfPaymentService.setOrientation(0);
 
-        if (isUpiIntent) {
-            // Use the following method for initiating UPI Intent Payments
-            cfPaymentService.gPayPayment(this, params, token, this, stage);
-        }
-        else {
-            // Use the following method for initiating regular Payments
-            cfPaymentService.doPayment(this, params, token, this, stage);
-        }
-
-    }
-
-    public void doPayment(View view) throws JSONException {
-        this.triggerPayment(false);
-    }
-
-    public void upiPayment(View view) throws JSONException {
-        this.triggerPayment(true);
+        // Use the following method for initiating Payments
+        cfPaymentService.doPayment(this, params, token, this, stage);
     }
 
     @Override
