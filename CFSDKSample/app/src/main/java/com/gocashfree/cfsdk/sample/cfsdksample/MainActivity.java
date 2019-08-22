@@ -1,18 +1,16 @@
 package com.gocashfree.cfsdk.sample.cfsdksample;
 
-import java.util.HashMap;
-
-import java.util.Map;
-
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.gocashfree.cashfreesdk.CFPaymentService;
 
-import org.json.JSONException;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_APP_ID;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_CUSTOMER_EMAIL;
