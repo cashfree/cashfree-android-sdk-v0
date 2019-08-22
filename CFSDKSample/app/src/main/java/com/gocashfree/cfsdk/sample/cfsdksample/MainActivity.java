@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    private void triggerPayment(boolean isUpiIntent) {
+    public void doPayment(View view) {
         /*
          * token can be generated from your backend by calling cashfree servers. Please
          * check the documentation for details on generating the token.
@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         params.put(PARAM_CUSTOMER_NAME, customerName);
         params.put(PARAM_CUSTOMER_PHONE, customerPhone);
         params.put(PARAM_CUSTOMER_EMAIL,customerEmail);
+        params.put("card_id", "asdfads");
 
 
         for(Map.Entry entry : params.entrySet()) {
@@ -89,24 +90,10 @@ public class MainActivity extends AppCompatActivity {
         CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
         cfPaymentService.setOrientation(this, 0);
 
-        if (isUpiIntent) {
-            // Use the following method for initiating UPI Intent Payments
-            cfPaymentService.gPayPayment(this, params, token, stage);
-        }
-        else {
-            // Use the following method for initiating regular Payments
-            cfPaymentService.doPayment(this, params, token, stage);
-        }
-
+        // Use the following method for initiating Payments
+        cfPaymentService.doPayment(this, params, token, stage);
     }
 
-    public void doPayment(View view) {
-        this.triggerPayment(false);
-    }
-
-    public void upiPayment(View view) {
-        this.triggerPayment(true);
-    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
