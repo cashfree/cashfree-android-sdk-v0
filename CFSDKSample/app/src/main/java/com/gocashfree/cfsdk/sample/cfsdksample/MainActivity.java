@@ -1,18 +1,16 @@
 package com.gocashfree.cfsdk.sample.cfsdksample;
 
-import java.util.HashMap;
-
-import java.util.Map;
-
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.gocashfree.cashfreesdk.CFClientInterface;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.gocashfree.cashfreesdk.CFPaymentService;
 
-import org.json.JSONException;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_APP_ID;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_CUSTOMER_EMAIL;
@@ -24,7 +22,9 @@ import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_ORDER_NOTE;
 
 
 
-public class MainActivity extends AppCompatActivity implements CFClientInterface {
+public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
         setContentView(R.layout.activity_main);
     }
 
-    public void doPayment(View view) throws JSONException {
+    public void doPayment(View view) {
         /*
          * token can be generated from your backend by calling cashfree servers. Please
          * check the documentation for details on generating the token.
@@ -88,25 +88,28 @@ public class MainActivity extends AppCompatActivity implements CFClientInterface
         }
 
         CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
-        cfPaymentService.setOrientation(0);
+        cfPaymentService.setOrientation(this, 0);
 
         // Use the following method for initiating Payments
-        cfPaymentService.doPayment(this, params, token, this, stage);
+        cfPaymentService.doPayment(this, params, token, stage);
     }
 
     @Override
-    public void onSuccess(Map<String, String> map) {
-        Log.d("CFSDKSample", "Payment Success");
-    }
-
-    @Override
-    public void onFailure(Map<String, String> map) {
-        Log.d("CFSDKSample", "Payment Failure");
-    }
-
-    @Override
-    public void onNavigateBack() {
-        Log.d("CFSDKSample", "Back Pressed");
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //Same request code for all payment APIs.
+        Log.d(TAG, "ReqCode : " + CFPaymentService.REQ_CODE);
+        Log.d(TAG, "API Response : ");
+        //Prints all extras. Replace with app logic.
+        if (data != null) {
+            Bundle bundle = data.getExtras();
+            if (bundle != null)
+                for (String key : bundle.keySet()) {
+                    if (bundle.getString(key) != null) {
+                        Log.d(TAG, key + " : " + bundle.getString(key));
+                    }
+                }
+        }
     }
 }
 
