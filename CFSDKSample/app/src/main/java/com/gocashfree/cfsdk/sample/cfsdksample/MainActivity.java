@@ -17,12 +17,13 @@ import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_CUSTOMER_EMAIL;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_CUSTOMER_NAME;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_CUSTOMER_PHONE;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_ORDER_AMOUNT;
+import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_ORDER_CURRENCY;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_ORDER_ID;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_ORDER_NOTE;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     private static final String TAG = "MainActivity";
 
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
          * check the documentation for details on generating the token.
          * READ THIS TO GENERATE TOKEN: https://bit.ly/2RGV3Pp
          */
-        String token = "TOKEN_DATA";
+        String token = "6q9JCN4MzUIJiOicGbhJCLiQ1VKJiOiAXe0Jye.rM9JyMjNWOllzY2ETZ2QWNiojI0xWYz9lIsEDOxYTO0cjN1EjOiAHelJCLiIlTJJiOik3YuVmcyV3QyVGZy9mIsEjOiQnb19WbBJXZkJ3biwiIxEDMwIXZkJ3TiojIklkclRmcvJye.4zXM7A88RfgpRrtm7Hv7VWcxxKU0_0JY34lXHK4mvFtKHAPSA8zhDvwsEhD5BV_2qL";
 
 
         /*
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
          *      integrated the CashFree PG, use this value for stage variable. This will
          *      enable live transactions
          */
-        String stage = "TEST";
+        String stage = "PROD";
 
         /*
          * appId will be available to you at CashFree Dashboard. This is a unique
@@ -63,12 +64,12 @@ public class MainActivity extends AppCompatActivity {
          * Also, as explained below you will need to change your appId to prod
          * credentials before publishing your app.
          */
-        String appId = "YOUR_APP_ID_HERE";
-        String orderId = "Order0001";
+        String appId = "4214b3bc084ca98f63592a9c4124";
+        String orderId = "Order0011";
         String orderAmount = "1";
         String orderNote = "Test Order";
         String customerName = "John Doe";
-        String customerPhone = "9900012345";
+        String customerPhone = "9094881155";
         String customerEmail = "test@gmail.com";
 
         Map<String, String> params = new HashMap<>();
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         params.put(PARAM_APP_ID, appId);
         params.put(PARAM_ORDER_ID, orderId);
         params.put(PARAM_ORDER_AMOUNT, orderAmount);
+        params.put(PARAM_ORDER_CURRENCY, "INR");
         params.put(PARAM_ORDER_NOTE, orderNote);
         params.put(PARAM_CUSTOMER_NAME, customerName);
         params.put(PARAM_CUSTOMER_PHONE, customerPhone);
