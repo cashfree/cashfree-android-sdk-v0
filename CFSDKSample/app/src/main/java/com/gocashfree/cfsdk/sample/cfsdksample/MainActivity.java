@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
         params.put(PARAM_CUSTOMER_NAME, customerName);
         params.put(PARAM_CUSTOMER_PHONE, customerPhone);
         params.put(PARAM_CUSTOMER_EMAIL,customerEmail);
-        params.put("card_id", "asdfads");
 
 
         for(Map.Entry entry : params.entrySet()) {
@@ -91,7 +90,9 @@ public class MainActivity extends AppCompatActivity {
         cfPaymentService.setOrientation(this, 0);
 
         // Use the following method for initiating Payments
-        cfPaymentService.doPayment(this, params, token, stage);
+        // First color - Toolbar background
+        // Second color - Toolbar text and back arrow color
+        cfPaymentService.doPayment(this, params, token, stage, "#000000", "#FFFFFF");
     }
 
     @Override
