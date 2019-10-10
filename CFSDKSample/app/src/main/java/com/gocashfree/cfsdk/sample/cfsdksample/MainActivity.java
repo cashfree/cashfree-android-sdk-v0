@@ -97,7 +97,9 @@ public class MainActivity extends AppCompatActivity{
         }
         else {
             // Use the following method for initiating regular Payments
-            cfPaymentService.doPayment(this, params, token, stage);
+            // First color - Toolbar Background
+            // Second color - Toolbar Text
+            cfPaymentService.doPayment(this, params, token, stage, "#000000", "#FFFFFF");
         }
 
     }
