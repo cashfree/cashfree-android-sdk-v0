@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         CFPaymentService cfPaymentService = CFPaymentService.getCFPaymentServiceInstance();
-        cfPaymentService.setOrientation(this, 0);
+        cfPaymentService.setOrientation(0);
 
         // Use the following method for initiating Payments
         // First color - Toolbar background
