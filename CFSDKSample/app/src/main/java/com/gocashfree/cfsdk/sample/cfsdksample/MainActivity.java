@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         // Use the following method for initiating Payments
         // First color - Toolbar background
         // Second color - Toolbar text and back arrow color
-        cfPaymentService.doPayment(this, params, token, stage, "#000000", "#FFFFFF");
+        cfPaymentService.doPayment(this, params, token, stage, "#000000", "#FFFFFF", true);
     }
 
     @Override
