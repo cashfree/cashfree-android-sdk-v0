@@ -28,10 +28,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //Cash free SDK
-    implementation files ('libs/cashfreesdk-1.4.8-release.aar')
+    implementation files ('libs/cashfreesdk-1.4.9-release.aar')
 
     //Dependencies used by cashfree SDK
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
