@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CFSDKSample.iml" filepath="$PROJECT_DIR$/CFSDKSample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/CFSDKSample-app.iml" filepath="$PROJECT_DIR$/app/CFSDKSample-app.iml" group="CFSDKSample/app" />
+      <module fileurl="file://$PROJECT_DIR$/android-sdk-sample-CFSDKSample.iml" filepath="$PROJECT_DIR$/android-sdk-sample-CFSDKSample.iml" group="CFSDKSample" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
