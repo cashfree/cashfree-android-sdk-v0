@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //Same request code for all payment APIs.
-        Log.d(TAG, "ReqCode : " + CFPaymentService.REQ_CODE);
+//        Log.d(TAG, "ReqCode : " + CFPaymentService.REQ_CODE);
         Log.d(TAG, "API Response : ");
         //Prints all extras. Replace with app logic.
         if (data != null) {
