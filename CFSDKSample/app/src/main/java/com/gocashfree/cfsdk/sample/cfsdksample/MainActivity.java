@@ -19,6 +19,7 @@ import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_CUSTOMER_EMAIL;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_CUSTOMER_NAME;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_CUSTOMER_PHONE;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_ORDER_AMOUNT;
+import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_ORDER_CURRENCY;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_ORDER_ID;
 import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_ORDER_NOTE;
 
@@ -122,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
         params.put(PARAM_ORDER_NOTE, orderNote);
         params.put(PARAM_CUSTOMER_NAME, customerName);
         params.put(PARAM_CUSTOMER_PHONE, customerPhone);
-        params.put(PARAM_CUSTOMER_EMAIL,customerEmail);
+        params.put(PARAM_CUSTOMER_EMAIL, customerEmail);
+        params.put(PARAM_ORDER_CURRENCY, "INR");
 
 
         for(Map.Entry entry : params.entrySet()) {
