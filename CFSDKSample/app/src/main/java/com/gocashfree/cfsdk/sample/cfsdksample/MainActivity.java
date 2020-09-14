@@ -7,21 +7,20 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.gocashfree.cashfreesdk.CFPaymentService;
-import com.gocashfree.cashfreesdk.ui.gpay.GooglePayStatusListener;
+import com.cashfree.pg.CFPaymentService;
+import com.cashfree.pg.ui.gpay.GooglePayStatusListener;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_APP_ID;
-import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_CUSTOMER_EMAIL;
-import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_CUSTOMER_NAME;
-import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_CUSTOMER_PHONE;
-import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_ORDER_AMOUNT;
-import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_ORDER_CURRENCY;
-import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_ORDER_ID;
-import static com.gocashfree.cashfreesdk.CFPaymentService.PARAM_ORDER_NOTE;
+import static com.cashfree.pg.CFPaymentService.PARAM_APP_ID;
+import static com.cashfree.pg.CFPaymentService.PARAM_CUSTOMER_EMAIL;
+import static com.cashfree.pg.CFPaymentService.PARAM_CUSTOMER_NAME;
+import static com.cashfree.pg.CFPaymentService.PARAM_CUSTOMER_PHONE;
+import static com.cashfree.pg.CFPaymentService.PARAM_ORDER_AMOUNT;
+import static com.cashfree.pg.CFPaymentService.PARAM_ORDER_CURRENCY;
+import static com.cashfree.pg.CFPaymentService.PARAM_ORDER_ID;
+import static com.cashfree.pg.CFPaymentService.PARAM_ORDER_NOTE;
 
 
 
