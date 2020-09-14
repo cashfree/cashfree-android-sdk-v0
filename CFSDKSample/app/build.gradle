@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.1"
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.gocashfree.cfsdk.sample.cfsdksample"
         minSdkVersion 16
@@ -28,25 +28,25 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //Cash free SDK
-    implementation files ('libs/cashfreesdk-1.4.9.9-release.aar')
+    implementation 'com.cashfree.pg:android-sdk:1.5.1'
 
 
     //Dependencies used by all payment modes
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     //doPayment - If OTP Auto read enabled
-    implementation 'com.google.android.material:material:1.1.0'
-    implementation 'com.google.android.gms:play-services-auth:17.0.0'
-    implementation 'com.google.android.gms:play-services-auth-api-phone:17.3.0'
+    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'com.google.android.gms:play-services-auth:18.1.0'
+    implementation 'com.google.android.gms:play-services-auth-api-phone:17.4.0'
 
     //doUPIPayment
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     //doGPayPayment
     implementation files ("libs/google-pay-client-api-1.0.0.aar")
-    implementation 'com.google.android.gms:play-services-tasks:15.0.1'
+    implementation 'com.google.android.gms:play-services-tasks:17.1.0'
 
     //doAmazonPayment
     implementation 'androidx.browser:browser:1.0.0'
