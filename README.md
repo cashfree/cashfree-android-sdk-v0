@@ -3,7 +3,7 @@
 
 # Cashfree SDK Integration Steps
 
-## Step 1: Download Library
+## Step 1: Add Cashfree maven repository
 
 Add Cashfree maven repository to your module's build.gradle file.
 
@@ -26,7 +26,7 @@ For the android support library version, add the following:
 For the latest androidX library version, add the following:
 
 ```xml
- dependencies { implementation 'com.cashfree.pg:android-sdk:1.5.0' }
+ dependencies { implementation 'com.cashfree.pg:android-sdk:1.5.1' }
  ```
 <br/>
 
