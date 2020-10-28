@@ -58,7 +58,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onClick"
-            android:text="Billpay Web"/>
+            android:text="Web Checkout"/>
+        <Button
+            android:id="@+id/web_seamless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="Seamless Web Checkout"/>
         <Button
             android:id="@+id/gpay"
             android:layout_width="match_parent"
