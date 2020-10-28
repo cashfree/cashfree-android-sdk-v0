@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
             case R.id.web_seamless: {
-                cfPaymentService.phonePePayment(MainActivity.this, getSeamlessCheckoutParams(), token, stage);
+                cfPaymentService.doPayment(MainActivity.this, getSeamlessCheckoutParams(), token, stage);
                 break;
             }
         }
