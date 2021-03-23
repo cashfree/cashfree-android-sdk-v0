@@ -28,7 +28,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     //Cash free SDK
-    implementation 'com.cashfree.pg:android-sdk:1.5.2'
+    implementation 'com.cashfree.pg:android-sdk:1.6.1'
 
 
     //Dependencies used by all payment modes
